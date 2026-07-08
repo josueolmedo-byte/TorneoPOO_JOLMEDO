@@ -12,7 +12,13 @@ namespace TorneoPOO_JOLMEDO.Models
         public int Numero { get; set; }
         public string Posicion { get; set; }
 
-    
+        public Jugador(string nombre, int edad, int numero, string posicion)
+        {
+            this.Nombre = nombre;
+            this.Edad = edad;
+            this.Numero = numero;
+            this.Posicion = posicion;
+        }
 
         //METODOS, COMPORTAMIENTOS O FUNCIONES
         public void Presentar()
