@@ -16,19 +16,22 @@ namespace TorneoPOO_EMANOSALVAS.Models
 
         public Partido(Equipo local, Equipo visitante, DateTime fecha, string lugar)
         {
-            this.Local = local;
-            this.Visitante = visitante;
-            this.Fecha = fecha;
-            this.Lugar = lugar;
+
+            if (local != null && visitante != null && local.Nombre == visitante.Nombre)
+            {
+                Console.WriteLine("Error: El equipo Local y el Visitante no pueden ser el mismo.");
+            }
+
+            Local = local;
+            Visitante = visitante;
+            Fecha = fecha;
+            Lugar = lugar;
         }
 
         public void MostrarResumen()
         {
             Console.WriteLine($"Hay un partido programado entre el local {this.Local.Nombre} y el visitante {this.Visitante.Nombre} en el lugar {this.Lugar}");
         }
-        public void RegistrarResultado(int golesLocal, int golesVisitante)
-        {
-            Console.WriteLine($"{Local.Nombre} {golesLocal} - {golesVisitante} {Visitante.Nombre}");
-        }
+
     }
 }

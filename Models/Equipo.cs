@@ -20,12 +20,18 @@ namespace TorneoPOO_JOLMEDO.Models
             this.Ciudad = ciudad;
             this.Jugadores = new List<Jugador>();
         }
+
         public void AgregarJugador(Jugador objJugador)
         {
+            if (objJugador == null)
+            {
+                Console.WriteLine("Error: No se puede agregar un jugador nulo a la lista.");
+                return; 
+            }
+
             this.Jugadores.Add(objJugador);
             Console.WriteLine($"Jugador {objJugador.Nombre} agregado correctamente");
         }
-
         public void ListarPlantilla()
         {
             Console.WriteLine($"La lista de jugadores del equipo {this.Nombre} de la ciudad de {this.Ciudad} es:");
