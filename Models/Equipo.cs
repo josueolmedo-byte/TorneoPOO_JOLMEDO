@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace TorneoPOO_JOLMEDO.Models
 {
@@ -16,6 +12,11 @@ namespace TorneoPOO_JOLMEDO.Models
 
         public Equipo(string nombre, string ciudad)
         {
+            if (string.IsNullOrWhiteSpace(nombre))
+            {
+                throw new Exception("El nombre del equipo no puede estar vacío.");
+            }
+
             this.Nombre = nombre;
             this.Ciudad = ciudad;
             this.Jugadores = new List<Jugador>();
@@ -40,6 +41,10 @@ namespace TorneoPOO_JOLMEDO.Models
             {
                 objJugador.Presentar();
             }
+        }
+        public int ContarJugadores()
+        {
+            return Jugadores.Count;
         }
     }
 }

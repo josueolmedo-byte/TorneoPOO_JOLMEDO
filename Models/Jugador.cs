@@ -14,6 +14,10 @@ namespace TorneoPOO_JOLMEDO.Models
 
         public Jugador(string nombre, int edad, int numero, string posicion)
         {
+            if (string.IsNullOrWhiteSpace(nombre))
+            {
+                throw new Exception("El nombre del jugador no puede estar vacío.");
+            }
             if (!EsMayorEdad(edad))
             {
                 throw new Exception("El jugador debe ser mayor de edad");
@@ -57,6 +61,10 @@ namespace TorneoPOO_JOLMEDO.Models
                 return false;
             }
         }
-
+        public void CambiarPosicion(string nuevaPosicion)
+        {
+            Posicion = nuevaPosicion;
+            Console.WriteLine($"{Nombre} ahora juega como {nuevaPosicion}.");
+        }
     }
 }

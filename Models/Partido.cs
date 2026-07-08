@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+
 using TorneoPOO_JOLMEDO.Models;
 
-namespace TorneoPOO_EMANOSALVAS.Models
+namespace TorneoPOO_JOLMEDO.Models
 {
     public class Partido
     {
@@ -16,7 +15,6 @@ namespace TorneoPOO_EMANOSALVAS.Models
 
         public Partido(Equipo local, Equipo visitante, DateTime fecha, string lugar)
         {
-
             if (local != null && visitante != null && local.Nombre == visitante.Nombre)
             {
                 Console.WriteLine("Error: El equipo Local y el Visitante no pueden ser el mismo.");
@@ -32,6 +30,10 @@ namespace TorneoPOO_EMANOSALVAS.Models
         {
             Console.WriteLine($"Hay un partido programado entre el local {this.Local.Nombre} y el visitante {this.Visitante.Nombre} en el lugar {this.Lugar}");
         }
-
+        public void CambiarLugar(string nuevoLugar)
+        {
+            Lugar = nuevoLugar;
+            Console.WriteLine($"El partido ahora se jugará en {Lugar}.");
+        }
     }
 }
