@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace TorneoPOO_JOLMEDO.Models
 {
@@ -13,6 +14,12 @@ namespace TorneoPOO_JOLMEDO.Models
         public string Ciudad { get; set; }
         public List<Jugador> Jugadores { get; set; }
 
+        public Equipo(string nombre, string ciudad)
+        {
+            this.Nombre = nombre;
+            this.Ciudad = ciudad;
+            this.Jugadores = new List<Jugador>();
+        }
         public void AgregarJugador(Jugador objJugador)
         {
             this.Jugadores.Add(objJugador);
