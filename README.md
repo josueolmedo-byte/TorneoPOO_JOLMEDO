@@ -6,3 +6,8 @@ Comportamientos de las clases
    Creacion de metodos
    Creacion de constructores
    Validacion de datos
+
+2026-07-08
+  Implementación de los tresmétodos nuevos
+  Validacion de datos en los métodos nuevos agregando 2 reglas simples
+  Actualizacion de el README
