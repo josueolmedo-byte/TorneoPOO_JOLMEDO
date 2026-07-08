@@ -3,3 +3,6 @@
 
 2026-07-07
 Comportamientos de las clases
+   Creacion de metodos
+   Creacion de constructores
+   Validacion de datos

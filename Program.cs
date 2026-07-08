@@ -1,7 +1,7 @@
 ﻿using TorneoPOO_EMANOSALVAS.Models;
 using TorneoPOO_JOLMEDO.Models;
 
-Jugador objJugador1 = new Jugador("Lamine Yamal", 18, 19, "Extremo Derecho");
+Jugador objJugador1 = new Jugador("Lamine Yamal", 20, 19, "Extremo Derecho");
 
 Jugador objJugador2 = new Jugador("Lionel Messi", 39, 10, "Delantero");
 
