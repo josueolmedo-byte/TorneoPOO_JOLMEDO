@@ -7,12 +7,80 @@ namespace TorneoPOO_JOLMEDO.Models
     public class Jugador
     {
         //ATRIBUTOS O CARACTERISTICAS
-        public string Nombre { get; set; }
-        public int Edad { get; set; }
-        public int Numero { get; set; }
-        public string Posicion { get; set; }
+        private string nombre;
+        private int edad;
+        private int numero;
+        private string posicion;
+        private string nacionalidad;
+        private double altura;
+        private string pieDominante;
 
-        public Jugador(string nombre, int edad, int numero, string posicion)
+        public string Nombre { get => nombre; set => nombre = value; }
+        public int Edad
+        {
+            get => edad;
+            set
+            {
+                if (!EsMayorEdad(value))
+                {
+                    throw new Exception("El jugador debe ser mayor de edad");
+                }
+                edad = value;
+            }
+        }
+        public int Numero 
+        {
+            get => numero;
+            set
+            {
+                if (!EsNumeroValido(value))
+                {
+                    throw new Exception("El número de la camiseta no es válido");
+                }
+                numero = value;
+            }
+        }
+        public string Posicion { get => posicion; set => posicion = value; }
+        public string Nacionalidad
+        {
+            get => nacionalidad;
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    throw new Exception("La nacionalidad no puede estar vacía.");
+                }
+                nacionalidad = value;
+            }
+        }
+        public double Altura
+        {
+            get => altura;
+            set
+            {
+                if (value < 1.30 || value > 2.50)
+                {
+                    throw new Exception("La altura no es válida.");
+                }
+                altura = value;
+            }
+        }
+        public string PieDominante
+        {
+            get => pieDominante;
+            set
+            {
+                if (value != "Derecho" &&
+                    value != "Izquierdo" &&
+                    value != "Ambidiestro")
+                {
+                    throw new Exception("El pie dominante debe ser Derecho, Izquierdo o Ambidiestro.");
+                }
+                pieDominante = value;
+            }
+        }
+
+        public Jugador(string nombre, int edad, int numero, string posicion, string nacionalidad, double altura, string pieDominante)
         {
             if (string.IsNullOrWhiteSpace(nombre))
             {
@@ -30,6 +98,9 @@ namespace TorneoPOO_JOLMEDO.Models
             this.Edad = edad;
             this.Numero = numero;
             this.Posicion = posicion;
+            this.Nacionalidad = nacionalidad;
+            this.Altura = altura;
+            this.PieDominante = pieDominante;
         }
 
         //METODOS, COMPORTAMIENTOS O FUNCIONES

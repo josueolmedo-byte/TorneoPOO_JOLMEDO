@@ -11,3 +11,13 @@ Comportamientos de las clases
   Implementación de los tresmétodos nuevos
   Validacion de datos en los métodos nuevos agregando 2 reglas simples
   Actualizacion de el README
+
+2026-07-14
+  Creacion de propiedades
+  Modificadores 
+  Validaciones en propiedads
+
+2026-07-15
+  Se agregaron 3 atributos nuevos a las clases
+  Se actualizaron los constructores con los nuevos atributos.
+  Se implementaron validaciones para los nuevos datos.

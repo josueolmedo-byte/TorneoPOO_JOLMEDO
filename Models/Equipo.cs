@@ -6,11 +6,54 @@ namespace TorneoPOO_JOLMEDO.Models
 {
     public class Equipo
     {
-        public string Nombre { get; set; }
-        public string Ciudad { get; set; }
-        public List<Jugador> Jugadores { get; set; }
+        private string nombre;
+        private string ciudad;
+        private List<Jugador> jugadores;
+        private string directorTecnico;
+        private string capitan;
+        private string liga;
 
-        public Equipo(string nombre, string ciudad)
+        public string Nombre { get => nombre; set => nombre = value; }
+        public string Ciudad { get => ciudad; set => ciudad = value; }
+        public List<Jugador> Jugadores { get => jugadores; set => jugadores = value; }
+        public string DirectorTecnico
+        {
+            get => directorTecnico;
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    throw new Exception("El director técnico no puede estar vacío.");
+                }
+                directorTecnico = value;
+            }
+        }
+        public string Capitan
+        {
+            get => capitan;
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    throw new Exception("El capitán no puede estar vacío.");
+                }
+                capitan = value;
+            }
+        }
+        public string Liga
+        {
+            get => liga;
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    throw new Exception("La liga no puede estar vacía.");
+                }
+                liga = value;
+            }
+        }
+
+        public Equipo(string nombre, string ciudad, string directorTecnico, string capitan, string liga)
         {
             if (string.IsNullOrWhiteSpace(nombre))
             {
@@ -20,6 +63,9 @@ namespace TorneoPOO_JOLMEDO.Models
             this.Nombre = nombre;
             this.Ciudad = ciudad;
             this.Jugadores = new List<Jugador>();
+            this.DirectorTecnico = directorTecnico;
+            this.Capitan = capitan;
+            this.Liga = liga;
         }
 
         public void AgregarJugador(Jugador objJugador)
@@ -27,7 +73,7 @@ namespace TorneoPOO_JOLMEDO.Models
             if (objJugador == null)
             {
                 Console.WriteLine("Error: No se puede agregar un jugador nulo a la lista.");
-                return; 
+                return;
             }
 
             this.Jugadores.Add(objJugador);
