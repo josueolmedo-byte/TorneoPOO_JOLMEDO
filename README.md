@@ -21,3 +21,6 @@ Comportamientos de las clases
   Se agregaron 3 atributos nuevos a las clases
   Se actualizaron los constructores con los nuevos atributos.
   Se implementaron validaciones para los nuevos datos.
+
+  Creacion de menu
+  Almacemenamiento de datos en listas estaticas
