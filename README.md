@@ -24,3 +24,6 @@ Comportamientos de las clases
 
   Creacion de menu
   Almacemenamiento de datos en listas estaticas
+
+2026-07-16
+  CRUD de la clase Jugador

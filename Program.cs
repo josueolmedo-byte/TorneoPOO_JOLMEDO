@@ -3,6 +3,8 @@ using TorneoPOO_JOLMEDO.Models;
 
 
 int opcion = 0;
+Jugador objJug1 = new Jugador("Josué", 19, 19, "Lateral Izquierdo", "Ecuatoriano", 1.75, "Izquierdo");
+Database.Jugadores.Add(objJug1);
 do
 {
     Console.Clear();
@@ -11,9 +13,12 @@ do
     Console.WriteLine("Seleccione una opción:");
     Console.WriteLine("1. Crear Jugadores");
     Console.WriteLine("2. Listar Jugadores");
-    Console.WriteLine("3. Crear Equipos");
-    Console.WriteLine("4. Crear Partidos");
-    Console.WriteLine("5. Salir");
+    Console.WriteLine("3. Buscar Jugador");
+    Console.WriteLine("4. Actualizar Jugador");
+    Console.WriteLine("5. Eliminar Jugador");
+    Console.WriteLine("6. Crear Equipos");
+    Console.WriteLine("7. Crear Partidos");
+    Console.WriteLine("8. Salir");
     Console.WriteLine("");
     Console.WriteLine("Ingrese una Opcion: ");
     opcion = Convert.ToInt32(Console.ReadLine());
@@ -28,19 +33,113 @@ do
             listarJugadores();
             break;
         case 3:
-            crearEquipo();
+            buscarJugadores();
             break;
         case 4:
-            crearPartido();
+            actualizarJugador();
             break;
         case 5:
+            eliminarJugador();
+            break;
+        case 6:
+            crearEquipo();
+            break;
+        case 7:
+            crearPartido();
+            break;
+        case 8:
             Console.WriteLine("Saliendo del programa...");
             break;
         default:
             Console.WriteLine("Opción no válida. Por favor, intente nuevamente.");
             break;
     }
-} while (opcion != 5);
+} while (opcion != 8);
+
+void eliminarJugador()
+{
+    Console.Clear();
+    Console.WriteLine("**********Eliminar Jugador**********");
+    Console.WriteLine("Ingrese el nombre del jugador a eliminar: ");
+    string nombreIngresado = Console.ReadLine();
+    Jugador objJugador = Database.Jugadores.Find(j => j.Nombre == nombreIngresado);
+    if (objJugador != null)
+    {
+        Console.WriteLine("----------------------");
+        objJugador.Imprimir();
+        Console.WriteLine("----------------------");
+        Console.WriteLine($"¿Está seguro de que desea eliminar al jugador {objJugador.Nombre}? S/N: ");
+        if(Console.ReadLine().ToUpper() == "S")
+        {
+            Database.Jugadores.Remove(objJugador);
+            Console.WriteLine("Jugador eliminado exitosamente");
+        }
+        else
+        {
+            Console.WriteLine("Operación cancelada");
+        }
+    }
+    else
+    {
+        Console.WriteLine("Jugador no encontrado");
+    }
+    Console.ReadLine();
+}
+
+void actualizarJugador()
+{
+    Console.Clear();
+    Console.WriteLine("**********Actualizar Jugador**********");
+    Console.WriteLine("Ingrese el nombre del jugador a actualizar: ");
+    string nombreIngresado = Console.ReadLine();
+    Jugador objJugador = Database.Jugadores.Find(j => j.Nombre == nombreIngresado);
+    if (objJugador != null)
+    {
+        Console.WriteLine("Jugador encontrado");
+        Console.WriteLine("----------------------");
+        objJugador.Imprimir();
+        Console.Write("Ingrese el nuevo nombre del jugador: ");
+        objJugador.Nombre = Console.ReadLine();
+        Console.Write("Ingrese la nueva edad del jugador: ");
+        objJugador.Edad = Convert.ToInt32(Console.ReadLine());
+        Console.Write("Ingrese el nuevo número del jugador: ");
+        objJugador.Numero = Convert.ToInt32(Console.ReadLine());
+        Console.Write("Ingrese la nueva posición del jugador: ");
+        objJugador.Posicion = Console.ReadLine();
+        Console.Write("Ingrese la nueva nacionalidad del jugador: ");
+        objJugador.Nacionalidad = Console.ReadLine();
+        Console.Write("Ingrese la nueva altura del jugador: ");
+        objJugador.Altura = Convert.ToDouble(Console.ReadLine());
+        Console.Write("Ingrese el nuevo pie dominante del jugador: ");
+        objJugador.PieDominante = Console.ReadLine();
+        Console.WriteLine("Jugador actualizado exitosamente.");
+    }
+    else
+    {
+        Console.WriteLine("Jugador no encontrado.");
+    }
+    Console.ReadLine();
+}
+
+void buscarJugadores()
+{
+    Console.Clear();
+    Console.WriteLine("**********Buscar Jugador**********");
+    Console.WriteLine("Ingrese el nombre del jugador a buscar: ");
+    string nombreIngresado = Console.ReadLine();
+    Jugador objJugador = Database.Jugadores.Find(j => j.Nombre == nombreIngresado);
+    if (objJugador != null)
+    {
+        Console.WriteLine("Jugador encontrado");
+        Console.WriteLine("------------------");
+        objJugador.Imprimir();
+    }
+    else
+    {
+        Console.WriteLine("Jugador no encontrado");
+    }
+    Console.ReadLine();
+}
 
 void listarJugadores()
 {
@@ -48,7 +147,8 @@ void listarJugadores()
     Console.WriteLine("**********Jugadores Creados**********");
     foreach(Jugador jugador in Database.Jugadores)
     {
-        jugador.Presentar();
+        jugador.Imprimir();
+        Console.WriteLine("-----------------------------");
     }
     Console.ReadLine();
 }

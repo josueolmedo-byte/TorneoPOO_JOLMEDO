@@ -14,6 +14,7 @@ namespace TorneoPOO_JOLMEDO.Models
         private string nacionalidad;
         private double altura;
         private string pieDominante;
+        private string fichado;
 
         public string Nombre { get => nombre; set => nombre = value; }
         public int Edad
@@ -79,7 +80,7 @@ namespace TorneoPOO_JOLMEDO.Models
                 pieDominante = value;
             }
         }
-
+        public string Fichado { get => fichado;  }
         public Jugador(string nombre, int edad, int numero, string posicion, string nacionalidad, double altura, string pieDominante)
         {
             if (string.IsNullOrWhiteSpace(nombre))
@@ -101,6 +102,7 @@ namespace TorneoPOO_JOLMEDO.Models
             this.Nacionalidad = nacionalidad;
             this.Altura = altura;
             this.PieDominante = pieDominante;
+            this.fichado = "N";
         }
 
         //METODOS, COMPORTAMIENTOS O FUNCIONES
@@ -136,6 +138,21 @@ namespace TorneoPOO_JOLMEDO.Models
         {
             Posicion = nuevaPosicion;
             Console.WriteLine($"{Nombre} ahora juega como {nuevaPosicion}.");
+        }
+        public void Imprimir()
+        {
+            Console.WriteLine($"Nombre: {this.Nombre}");
+            Console.WriteLine($"Edad: {this.Edad}");
+            Console.WriteLine($"Número: {this.Numero}");
+            Console.WriteLine($"Posición: {this.Posicion}");
+            Console.WriteLine($"Nacionalidad: {this.Nacionalidad}");
+            Console.WriteLine($"Altura: {this.Altura} ");
+            Console.WriteLine($"Pie Dominante: {this.PieDominante}");
+            Console.WriteLine($"Fichado: {this.Fichado} ");
+        }
+        private void Fichar()
+        {
+            this.fichado = "S";
         }
     }
 }
