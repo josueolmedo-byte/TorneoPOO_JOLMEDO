@@ -8,6 +8,7 @@ namespace TorneoPOO_JOLMEDO.Models
 {
     public class Partido
     {
+        private int id;
         private Equipo Local;
         private Equipo Visitante;
         private DateTime Fecha;
@@ -56,14 +57,19 @@ namespace TorneoPOO_JOLMEDO.Models
                 jornada = value;
             }
         }
+        public int Id
+        {
+            get => id;
+            set => id = value;
+        }
 
-        public Partido(Equipo local, Equipo visitante, DateTime fecha, string lugar, string arbitro, string torneo, int jornada)
+        public Partido(int id, Equipo local, Equipo visitante, DateTime fecha, string lugar, string arbitro, string torneo, int jornada)
         {
             if (local != null && visitante != null && local.Nombre == visitante.Nombre)
             {
                 Console.WriteLine("Error: El equipo Local y el Visitante no pueden ser el mismo.");
             }
-
+            this.Id = id;
             Local1 = local;
             Visitante1 = visitante;
             Fecha1 = fecha;
@@ -71,11 +77,22 @@ namespace TorneoPOO_JOLMEDO.Models
             this.Arbitro = arbitro;
             this.Torneo = torneo;
             this.Jornada = jornada;
+            
         }
-
         public void MostrarResumen()
         {
             Console.WriteLine($"Hay un partido programado entre el local {this.Local1.Nombre} y el visitante {this.Visitante1.Nombre} en el lugar {this.Lugar1}");
+        }
+        public void Imprimir()
+        {
+            Console.WriteLine($"ID: {this.Id}");
+            Console.WriteLine($"Equipo Local: {this.Local1.Nombre}");
+            Console.WriteLine($"Equipo Visitante: {this.Visitante1.Nombre}");
+            Console.WriteLine($"Fecha: {this.Fecha1}");
+            Console.WriteLine($"Lugar: {this.Lugar1}");
+            Console.WriteLine($"Árbitro: {this.Arbitro}");
+            Console.WriteLine($"Torneo: {this.Torneo}");
+            Console.WriteLine($"Jornada: {this.Jornada}");
         }
         public void CambiarLugar(string nuevoLugar)
         {

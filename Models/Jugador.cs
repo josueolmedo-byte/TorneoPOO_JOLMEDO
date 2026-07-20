@@ -15,6 +15,7 @@ namespace TorneoPOO_JOLMEDO.Models
         private double altura;
         private string pieDominante;
         private string fichado;
+        private Equipo equipo_actual;
 
         public string Nombre { get => nombre; set => nombre = value; }
         public int Edad
@@ -103,6 +104,7 @@ namespace TorneoPOO_JOLMEDO.Models
             this.Altura = altura;
             this.PieDominante = pieDominante;
             this.fichado = "N";
+            this.equipo_actual = null;
         }
 
         //METODOS, COMPORTAMIENTOS O FUNCIONES
@@ -149,10 +151,12 @@ namespace TorneoPOO_JOLMEDO.Models
             Console.WriteLine($"Altura: {this.Altura} ");
             Console.WriteLine($"Pie Dominante: {this.PieDominante}");
             Console.WriteLine($"Fichado: {this.Fichado} ");
+            Console.WriteLine($"Equipo Actual: {(this.equipo_actual != null ? this.equipo_actual.Nombre : "Sin equipo")}");
         }
-        private void Fichar()
+        public void Fichar(Equipo objEquipoFichado)
         {
             this.fichado = "S";
+            this.equipo_actual = objEquipoFichado;
         }
     }
 }

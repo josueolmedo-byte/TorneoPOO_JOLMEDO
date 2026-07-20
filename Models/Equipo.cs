@@ -85,12 +85,22 @@ namespace TorneoPOO_JOLMEDO.Models
 
             foreach (Jugador objJugador in Jugadores)
             {
-                objJugador.Presentar();
+                objJugador.Imprimir();
+                Console.WriteLine("---------------------");
             }
         }
         public int ContarJugadores()
         {
             return Jugadores.Count;
+        }
+        public void Imprimir()
+        {
+            Console.WriteLine($"Nombre del equipo: {this.Nombre}");
+            Console.WriteLine($"Ciudad del equipo: {this.Ciudad}");
+            Console.WriteLine($"Director Técnico del equipo: {this.DirectorTecnico}");
+            Console.WriteLine($"Capitán del equipo: {this.Capitan}");
+            Console.WriteLine($"Liga del equipo: {this.Liga}");
+            ListarPlantilla();
         }
     }
 }

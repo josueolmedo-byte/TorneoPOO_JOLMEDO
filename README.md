@@ -27,3 +27,8 @@ Comportamientos de las clases
 
 2026-07-16
   CRUD de la clase Jugador
+
+2026-07-20
+  Actualización del menú principal.
+  Se agregaron opciones para el CRUD de Equipos y Partidos.
+  Implementación de crear, listar, buscar, actualizar y eliminar partidos.
