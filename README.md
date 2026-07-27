@@ -32,3 +32,10 @@ Comportamientos de las clases
   Actualización del menú principal.
   Se agregaron opciones para el CRUD de Equipos y Partidos.
   Implementación de crear, listar, buscar, actualizar y eliminar partidos.
+
+2026-07-27
+  Implementación de la clase Database.
+  Creación de la clase ArchivoJson.
+  Almacenamiento y carga de datos mediante archivos JSON.
+  Persistencia de la información de Jugadores, Equipos y Partidos.
+  Organización de los archivos de datos en la carpeta Datos.

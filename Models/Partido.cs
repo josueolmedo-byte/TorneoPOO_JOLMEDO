@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-using TorneoPOO_JOLMEDO.Models;
+using TorneoPOO_JOLMEDO.Generales;
 
 namespace TorneoPOO_JOLMEDO.Models
 {
@@ -63,13 +63,12 @@ namespace TorneoPOO_JOLMEDO.Models
             set => id = value;
         }
 
-        public Partido(int id, Equipo local, Equipo visitante, DateTime fecha, string lugar, string arbitro, string torneo, int jornada)
+        public Partido(Equipo local, Equipo visitante, DateTime fecha, string lugar, string arbitro, string torneo, int jornada)
         {
             if (local != null && visitante != null && local.Nombre == visitante.Nombre)
             {
                 Console.WriteLine("Error: El equipo Local y el Visitante no pueden ser el mismo.");
             }
-            this.Id = id;
             Local1 = local;
             Visitante1 = visitante;
             Fecha1 = fecha;
@@ -77,7 +76,14 @@ namespace TorneoPOO_JOLMEDO.Models
             this.Arbitro = arbitro;
             this.Torneo = torneo;
             this.Jornada = jornada;
-            
+            if (Database.Partidos.Count == 0)
+            {
+                this.id = 1;
+            }
+            else
+            {
+                this.id = Database.Partidos.Max(x => x.id) + 1;
+            }
         }
         public void MostrarResumen()
         {
@@ -85,7 +91,7 @@ namespace TorneoPOO_JOLMEDO.Models
         }
         public void Imprimir()
         {
-            Console.WriteLine($"ID: {this.Id}");
+            Console.WriteLine($"Id del partido: {this.Id}");
             Console.WriteLine($"Equipo Local: {this.Local1.Nombre}");
             Console.WriteLine($"Equipo Visitante: {this.Visitante1.Nombre}");
             Console.WriteLine($"Fecha: {this.Fecha1}");

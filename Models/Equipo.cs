@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using TorneoPOO_JOLMEDO.Generales;
 
 namespace TorneoPOO_JOLMEDO.Models
 {
@@ -12,10 +13,12 @@ namespace TorneoPOO_JOLMEDO.Models
         private string directorTecnico;
         private string capitan;
         private string liga;
+        private int id;
 
         public string Nombre { get => nombre; set => nombre = value; }
         public string Ciudad { get => ciudad; set => ciudad = value; }
         public List<Jugador> Jugadores { get => jugadores; set => jugadores = value; }
+        public int Id { get => id; set => id = value; }
         public string DirectorTecnico
         {
             get => directorTecnico;
@@ -66,6 +69,14 @@ namespace TorneoPOO_JOLMEDO.Models
             this.DirectorTecnico = directorTecnico;
             this.Capitan = capitan;
             this.Liga = liga;
+            if (Database.Equipos.Count == 0)
+            {
+                this.id = 1;
+            }
+            else
+            {
+                this.id = Database.Equipos.Max(x => x.id) + 1;
+            }
         }
 
         public void AgregarJugador(Jugador objJugador)
@@ -95,6 +106,7 @@ namespace TorneoPOO_JOLMEDO.Models
         }
         public void Imprimir()
         {
+            Console.WriteLine($"Id: {this.Id}");
             Console.WriteLine($"Nombre del equipo: {this.Nombre}");
             Console.WriteLine($"Ciudad del equipo: {this.Ciudad}");
             Console.WriteLine($"Director Técnico del equipo: {this.DirectorTecnico}");

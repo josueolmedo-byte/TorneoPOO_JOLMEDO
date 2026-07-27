@@ -1,14 +1,8 @@
 ﻿using TorneoPOO_JOLMEDO.Generales;
 using TorneoPOO_JOLMEDO.Models;
 
-
+Database.CargarDatos();
 int opcion = 0;
-Jugador objJug1 = new Jugador("Josué", 19, 19, "Lateral Izquierdo", "Ecuatoriano", 1.75, "Izquierdo");
-Jugador objJug2 = new Jugador("Messi", 39, 10, "Delantero", "Argentino", 1.70, "Izquierdo");
-Jugador objJug3 = new Jugador("Ronaldo", 41, 7, "Delantero", "Portugues", 1.87, "Derecho");
-Database.Jugadores.Add(objJug1);
-Database.Jugadores.Add(objJug2);
-Database.Jugadores.Add(objJug3);
 do
 {
     Console.Clear();
@@ -23,13 +17,13 @@ do
     Console.WriteLine("6. Crear Equipos");
     Console.WriteLine("7. Listar Equipos");
     Console.WriteLine("8. Buscar Equipo");
-    Console.WriteLine("9. Actualizar Equipos");//**********
-    Console.WriteLine("10. Eliminar Equipos");//**********
-    Console.WriteLine("11. Crear Partidos");//**********
-    Console.WriteLine("12. Listar Partidos");//**********
-    Console.WriteLine("13. Buscar Partido");//**********
-    Console.WriteLine("14. Actualizar Partido");//**********
-    Console.WriteLine("15. Eliminar Partido");//**********
+    Console.WriteLine("9. Actualizar Equipos");
+    Console.WriteLine("10. Eliminar Equipos");
+    Console.WriteLine("11. Crear Partidos");
+    Console.WriteLine("12. Listar Partidos");
+    Console.WriteLine("13. Buscar Partido");
+    Console.WriteLine("14. Actualizar Partido");
+    Console.WriteLine("15. Eliminar Partido");
     Console.WriteLine("16. Salir");
     Console.WriteLine("");
     Console.WriteLine("Ingrese una Opcion: ");
@@ -196,7 +190,7 @@ void crearPartidos()
     string torneo = Console.ReadLine();
     Console.Write("Jornada: ");
     int jornada = Convert.ToInt32(Console.ReadLine());
-    Partido objPartido = new Partido(id, objLocal, objVisitante, fecha, lugar, arbitro, torneo, jornada);
+    Partido objPartido = new Partido(objLocal, objVisitante, fecha, lugar, arbitro, torneo, jornada);
     Database.Partidos.Add(objPartido);
     Console.WriteLine("Partido creado correctamente.");
     Console.ReadLine();
@@ -306,6 +300,7 @@ void eliminarJugador()
         if(Console.ReadLine().ToUpper() == "S")
         {
             Database.Jugadores.Remove(objJugador);
+            Database.GuardarJugadores();
             Console.WriteLine("Jugador eliminado exitosamente");
         }
         else
@@ -346,6 +341,7 @@ void actualizarJugador()
         objJugador.Altura = Convert.ToDouble(Console.ReadLine());
         Console.Write("Ingrese el nuevo pie dominante del jugador: ");
         objJugador.PieDominante = Console.ReadLine();
+        Database.GuardarJugadores();
         Console.WriteLine("Jugador actualizado exitosamente.");
     }
     else
@@ -455,6 +451,7 @@ void crearJugador()
 
     Jugador objJugador = new Jugador(nombre, edad, numero, posicion, nacionalidad, altura, pieDominante);
     Database.Jugadores.Add(objJugador);
+    Database.GuardarJugadores();
     Console.WriteLine("Jugador creado exitosamente.");
     Console.ReadLine();
 }

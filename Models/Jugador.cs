@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using TorneoPOO_JOLMEDO.Generales;
 
 namespace TorneoPOO_JOLMEDO.Models
 {
@@ -16,6 +17,7 @@ namespace TorneoPOO_JOLMEDO.Models
         private string pieDominante;
         private string fichado;
         private Equipo equipo_actual;
+        private int id;
 
         public string Nombre { get => nombre; set => nombre = value; }
         public int Edad
@@ -82,6 +84,7 @@ namespace TorneoPOO_JOLMEDO.Models
             }
         }
         public string Fichado { get => fichado;  }
+        public int Id { get => id; set => id = value; }
         public Jugador(string nombre, int edad, int numero, string posicion, string nacionalidad, double altura, string pieDominante)
         {
             if (string.IsNullOrWhiteSpace(nombre))
@@ -105,6 +108,14 @@ namespace TorneoPOO_JOLMEDO.Models
             this.PieDominante = pieDominante;
             this.fichado = "N";
             this.equipo_actual = null;
+            if (Database.Jugadores.Count == 0)
+            {
+                this.id = 1;
+            }
+            else
+            {
+                this.id = Database.Jugadores.Max(x => x.id) + 1;
+            }
         }
 
         //METODOS, COMPORTAMIENTOS O FUNCIONES
@@ -143,6 +154,7 @@ namespace TorneoPOO_JOLMEDO.Models
         }
         public void Imprimir()
         {
+            Console.WriteLine($"Id: {this.Id}");
             Console.WriteLine($"Nombre: {this.Nombre}");
             Console.WriteLine($"Edad: {this.Edad}");
             Console.WriteLine($"Número: {this.Numero}");
