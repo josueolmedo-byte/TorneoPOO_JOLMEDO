@@ -16,8 +16,9 @@ namespace TorneoPOO_JOLMEDO.Models
         private double altura;
         private string pieDominante;
         private string fichado;
-        private Equipo equipo_actual;
+        private Equipo? equipo_actual;
         private int id;
+        private int? equipoId { get; set; }
 
         public string Nombre { get => nombre; set => nombre = value; }
         public int Edad
@@ -85,6 +86,8 @@ namespace TorneoPOO_JOLMEDO.Models
         }
         public string Fichado { get => fichado;  }
         public int Id { get => id; set => id = value; }
+        public int EquipoId { get => equipoId ?? 0; set => equipoId = value; }
+        public Equipo? EquipoActual { get => equipo_actual; set => equipo_actual = value; }
         public Jugador(string nombre, int edad, int numero, string posicion, string nacionalidad, double altura, string pieDominante)
         {
             if (string.IsNullOrWhiteSpace(nombre))
@@ -108,14 +111,11 @@ namespace TorneoPOO_JOLMEDO.Models
             this.PieDominante = pieDominante;
             this.fichado = "N";
             this.equipo_actual = null;
-            if (Database.Jugadores.Count == 0)
-            {
-                this.id = 1;
-            }
-            else
-            {
-                this.id = Database.Jugadores.Max(x => x.id) + 1;
-            }
+        }
+        public Jugador()
+        {
+            this.fichado = "N";
+            this.equipo_actual = null;
         }
 
         //METODOS, COMPORTAMIENTOS O FUNCIONES

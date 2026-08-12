@@ -69,14 +69,10 @@ namespace TorneoPOO_JOLMEDO.Models
             this.DirectorTecnico = directorTecnico;
             this.Capitan = capitan;
             this.Liga = liga;
-            if (Database.Equipos.Count == 0)
-            {
-                this.id = 1;
-            }
-            else
-            {
-                this.id = Database.Equipos.Max(x => x.id) + 1;
-            }
+        }
+        public Equipo()
+        {
+
         }
 
         public void AgregarJugador(Jugador objJugador)

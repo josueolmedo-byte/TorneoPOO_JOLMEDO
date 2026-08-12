@@ -16,6 +16,10 @@ namespace TorneoPOO_JOLMEDO.Models
         private string arbitro;
         private string torneo;
         private int jornada;
+        private int? localId { get; set; }
+        private int? visitanteId { get; set; }
+
+
         public Equipo Local1 { get => Local; set => Local = value; }
         public Equipo Visitante1 { get => Visitante; set => Visitante = value; }
         public DateTime Fecha1 { get => Fecha; set => Fecha = value; }
@@ -62,6 +66,8 @@ namespace TorneoPOO_JOLMEDO.Models
             get => id;
             set => id = value;
         }
+        public int ? LocalId { get => localId; set => localId = value; }
+        public int ? VisitanteId { get => visitanteId; set => visitanteId = value; }
 
         public Partido(Equipo local, Equipo visitante, DateTime fecha, string lugar, string arbitro, string torneo, int jornada)
         {
@@ -76,14 +82,6 @@ namespace TorneoPOO_JOLMEDO.Models
             this.Arbitro = arbitro;
             this.Torneo = torneo;
             this.Jornada = jornada;
-            if (Database.Partidos.Count == 0)
-            {
-                this.id = 1;
-            }
-            else
-            {
-                this.id = Database.Partidos.Max(x => x.id) + 1;
-            }
         }
         public void MostrarResumen()
         {
