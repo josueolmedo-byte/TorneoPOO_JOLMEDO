@@ -9,10 +9,10 @@ namespace TorneoPOO_JOLMEDO.Models
     public class Partido
     {
         private int id;
-        private Equipo Local;
-        private Equipo Visitante;
-        private DateTime Fecha;
-        private string Lugar;
+        private Equipo local;
+        private Equipo visitante;
+        private DateTime fecha;
+        private string lugar;
         private string arbitro;
         private string torneo;
         private int jornada;
@@ -20,10 +20,10 @@ namespace TorneoPOO_JOLMEDO.Models
         private int? visitanteId { get; set; }
 
 
-        public Equipo Local1 { get => Local; set => Local = value; }
-        public Equipo Visitante1 { get => Visitante; set => Visitante = value; }
-        public DateTime Fecha1 { get => Fecha; set => Fecha = value; }
-        public string Lugar1 { get => Lugar; set => Lugar = value; }
+        public Equipo Local { get => local; set => local = value; }
+        public Equipo Visitante { get => visitante; set => visitante = value; }
+        public DateTime Fecha { get => fecha; set => fecha = value; }
+        public string Lugar { get => lugar; set => lugar = value; }
         public string Arbitro
         {
             get => arbitro;
@@ -75,33 +75,33 @@ namespace TorneoPOO_JOLMEDO.Models
             {
                 Console.WriteLine("Error: El equipo Local y el Visitante no pueden ser el mismo.");
             }
-            Local1 = local;
-            Visitante1 = visitante;
-            Fecha1 = fecha;
-            Lugar1 = lugar;
+            Local = local;
+            Visitante = visitante;
+            Fecha = fecha;
+            Lugar = lugar;
             this.Arbitro = arbitro;
             this.Torneo = torneo;
             this.Jornada = jornada;
         }
         public void MostrarResumen()
         {
-            Console.WriteLine($"Hay un partido programado entre el local {this.Local1.Nombre} y el visitante {this.Visitante1.Nombre} en el lugar {this.Lugar1}");
+            Console.WriteLine($"Hay un partido programado entre el local {this.Local.Nombre} y el visitante {this.Visitante.Nombre} en el lugar {this.Lugar}");
         }
         public void Imprimir()
         {
             Console.WriteLine($"Id del partido: {this.Id}");
-            Console.WriteLine($"Equipo Local: {this.Local1.Nombre}");
-            Console.WriteLine($"Equipo Visitante: {this.Visitante1.Nombre}");
-            Console.WriteLine($"Fecha: {this.Fecha1}");
-            Console.WriteLine($"Lugar: {this.Lugar1}");
+            Console.WriteLine($"Equipo Local: {this.Local.Nombre}");
+            Console.WriteLine($"Equipo Visitante: {this.Visitante.Nombre}");
+            Console.WriteLine($"Fecha: {this.Fecha}");
+            Console.WriteLine($"Lugar: {this.Lugar}");
             Console.WriteLine($"Árbitro: {this.Arbitro}");
             Console.WriteLine($"Torneo: {this.Torneo}");
             Console.WriteLine($"Jornada: {this.Jornada}");
         }
         public void CambiarLugar(string nuevoLugar)
         {
-            Lugar1 = nuevoLugar;
-            Console.WriteLine($"El partido ahora se jugará en {Lugar1}.");
+            Lugar = nuevoLugar;
+            Console.WriteLine($"El partido ahora se jugará en {Lugar}.");
         }
     }
 }
